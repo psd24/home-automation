@@ -6,6 +6,8 @@ import { FormsModule } from '@angular/forms';
 import { Tab1Page } from './tab1.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 
+import { CandidateService } from '../services/bulbs.service';
+
 @NgModule({
   imports: [
     IonicModule,
@@ -14,6 +16,7 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
     ExploreContainerComponentModule,
     RouterModule.forChild([{ path: '', component: Tab1Page }])
   ],
-  declarations: [Tab1Page]
+  declarations: [Tab1Page],
+  providers: [CandidateService]
 })
 export class Tab1PageModule {}

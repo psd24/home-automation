@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CandidateService } from '../services/bulbs.service';
 
 @Component({
   selector: 'app-tab1',
@@ -7,6 +8,25 @@ import { Component } from '@angular/core';
 })
 export class Tab1Page {
 
-  constructor() {}
+  public status:number;
+  public title:string;
 
+  constructor(
+    private candidateService:CandidateService
+  ) {}
+
+  ionViewWillEnter(){
+    this.candidateService.info().subscribe(res =>{
+      this.status = res.light_state.on_off;
+      this.title = res.alias;
+      console.log(res)
+    });
+  }
+
+  clickBulb(status){
+    this.status = status;
+    this.candidateService.index(this.status).subscribe(res =>{
+      console.log(res)
+    })
+  }
 }

@@ -17,8 +17,18 @@ function stateBulbs(state, callback) {
         })
         .catch(e => {
             console.error(e)
-            return callback(e);
         })
 }
 
-module.exports = stateBulbs;
+function info(callback) {
+    const light = new TPLSmartDevice('192.168.1.84')
+    light.info()
+        .then(info => {
+            return callback(info)
+        })
+}
+
+module.exports = {
+    stateBulbs,
+    info
+}
