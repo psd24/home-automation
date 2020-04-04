@@ -15,7 +15,10 @@ function stateBulbs(state, callback) {
         .then(response => {
             return callback(response);
         })
-        .catch(e => console.error(e))
+        .catch(e => {
+            console.error(e)
+            return callback(e);
+        })
 }
 
 module.exports = stateBulbs;
